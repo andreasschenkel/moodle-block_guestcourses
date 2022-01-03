@@ -25,8 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-//use block_guestcourses\confighandler;
-
 class block_guestcourses extends block_base
 {
     public function init() {
@@ -76,22 +74,32 @@ class block_guestcourses extends block_base
             }
 
             $icon = '<i class="icon fa fa-graduation-cap fa-fw " title="Kurs" aria-label="Kurs"></i>';
+
+            $class = '';
+            if (!$isvisible) {
+                $class = 'dimmed';
+            }
+
+            // $linktext = "$icon $fullname id=$id $passwordindicator visible=$isvisible";
+            $linktext = "$icon $fullname id=$id $passwordindicator";
             if ($isvisible || ($showinvisible && $capabilityviewinvisible))  {
-                $links .= html_writer::link(new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)), "$icon $fullname $id");
-                $links .= " $passwordindicator  visible=$isvisible<br>";
+                $links .= html_writer::link(new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)), $linktext, array('class' => "$class") );
+                $links .= "<br>";
             }
         }
 
         $this->content = new stdClass;
         $this->content->text  = $links;
 
-        $footer = 
+        $footer = '';
+        
+        $footerdebug = 
         '$showguestcourselist=' . $showguestcourselist . '<br>' .
         '$showinvisible=' . $showinvisible . '<br>' .
         '$capabilityviewContent=' . $capabilityviewContent . '<br>' .
         '$capabilityviewinvisible=' . $capabilityviewinvisible . '<br>'  .
         '$isvisible=' . $isvisible .  '<br>' ;
-
+        // $footer = "$footerdebug";
 
         $this->content->footer = "$footer";
 
