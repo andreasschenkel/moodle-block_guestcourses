@@ -61,7 +61,6 @@ $capabilities = array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
-            'user' => CAP_ALLOW,
         )
 
     ),
