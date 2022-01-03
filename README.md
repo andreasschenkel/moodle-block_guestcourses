@@ -1,4 +1,4 @@
-# moodle-block_guestcourses x
+# moodle-block_guestcourses
 
 # 1. and 2. choice in feedback-generator #
 
@@ -38,8 +38,24 @@ See chapter settings to get information about the configuration.
 
 ## C: Capabilitys ##
 
+    C1: 'block/guestcourses:myaddinstance'
+    not set to any role
+
+    C2: 'block/guestcourses:addinstance'
+    not set to any role
+    only siteadmin is allowed to add block
 
 
+    C3: 'block/guestcourses:viewcontent'
+    'user' => CAP_ALLOW,
+            
+
+    C4: 'block/guestcourses:viewinvisible'
+    not set to any role
+    only siteadmin is allowed to view invisible hidden courses
+
+    
+  
 
 
 ## D: Changelog ##
