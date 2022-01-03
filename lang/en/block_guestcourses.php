@@ -31,8 +31,8 @@ $string['title'] = 'Courses with guestaccess';
 $string['showguestcourselist'] = 'Show guestcourses';
 $string['configshowguestcourselist'] = 'If activated then courses with enrolmentmethod guest are shown in the block.';
 
-$string['showinvisible'] = 'Show invisible courses';
-$string['configshowinvisible'] = 'If activated then courses with that are unvisible are not integrated in the list of shown guestcourses. (capability is also needed)';
+$string['showinvisible'] = 'Show invisible courses (should not be used in productiv moodle because name of course will be visible!)';
+$string['configshowinvisible'] = '(should not be used in productiv moodle because name of course will be visible!) If activated then courses with that are unvisible are not integrated in the list of shown guestcourses. (capability is also needed)';
 
 $string['showguestcourselistwithoutlogin'] = 'Show guestcourses without login';
 $string['configshowguestcourselistwithoutlogin'] = 'If activated the list of guest courses is shown to user without login.';

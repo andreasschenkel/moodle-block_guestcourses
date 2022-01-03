@@ -44,6 +44,11 @@ See chapter settings to get information about the configuration.
 
 ## D: Changelog ##
 
+[[v1.0.1]] beta
+- change footer
+- indicator for visibility of course instead of text
+- some languagestrings are missing
+
 [[v1.0.0]] initial
 
 

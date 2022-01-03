@@ -28,4 +28,4 @@ $plugin->maturity = MATURITY_BETA;
 $plugin->version  = 2022010204;
 $plugin->component = 'block_guestcourses';
 $plugin->requires = 2017111300;
-$plugin->release = 'v1.0.0';
+$plugin->release = 'v1.0.1';
