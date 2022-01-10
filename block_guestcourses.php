@@ -69,6 +69,8 @@ class block_guestcourses extends block_base
             $password = '';
             $password = $guestcourse[1];
 
+            $passwordindicator = '';
+
             if ($password != '') {
                 $passwordindicator = '<i class="icon fa fa-key fa-fw " title="Der Gastzugang benötigt einen Gastschlüssel." aria-label="Der Gastzugang benötigt einen Gastschlüssel."></i>';
             }
