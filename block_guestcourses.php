@@ -62,8 +62,6 @@ class block_guestcourses extends block_base
 
         $guestcourses = $this->all_courseids_with_guestenrolment();
         $links = '';
-
-        // TODO: empty guestcourses !!!
         foreach ($guestcourses as $guestcourse){
 
             $id = $guestcourse[0]->id;
