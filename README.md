@@ -1,4 +1,4 @@
-# moodle-block_guestcourses x
+# moodle-block_guestcourses
 
 # 1. and 2. choice in feedback-generator #
 
@@ -53,7 +53,7 @@ See chapter settings to get information about the configuration.
     C4: 'block/guestcourses:viewinvisible'
     not set to any role
     only siteadmin is allowed to view invisible hidden courses
-  
+
 
 
 ## D: Changelog ##
