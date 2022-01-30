@@ -38,14 +38,21 @@ See chapter settings to get information about the configuration.
 
 ## C: Capabilitys ##
 
-    'block/guestcourses:myaddinstance'
+    C1: 'block/guestcourses:myaddinstance'
+    not set to any role
 
-    'block/guestcourses:addinstance'
+    C2: 'block/guestcourses:addinstance'
+    not set to any role
+    only siteadmin is allowed to add block
 
-    'block/guestcourses:viewcontent'
-            'user' => CAP_ALLOW,
 
-    'block/guestcourses:viewinvisible'
+    C3: 'block/guestcourses:viewcontent'
+    'user' => CAP_ALLOW,
+            
+
+    C4: 'block/guestcourses:viewinvisible'
+    not set to any role
+    only siteadmin is allowed to view invisible hidden courses
   
 
 
