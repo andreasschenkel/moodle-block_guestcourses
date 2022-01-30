@@ -38,11 +38,30 @@ See chapter settings to get information about the configuration.
 
 ## C: Capabilitys ##
 
+    'block/guestcourses:myaddinstance'
 
+    'block/guestcourses:addinstance'
 
+    'block/guestcourses:viewcontent'
+            'user' => CAP_ALLOW,
+
+    'block/guestcourses:viewinvisible'
+  
 
 
 ## D: Changelog ##
+
+[[v1.0.2]] 
+
+20220120
+- some text strings defined correctly
+- don't show block when capability is missing
+- use core_course_category::get_courses() to find alle courses
+ 
+
+20220110 
+
+- bug missing initialisation of variable
 
 [[v1.0.1]] beta
 - change footer

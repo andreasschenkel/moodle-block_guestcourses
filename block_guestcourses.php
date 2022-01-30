@@ -48,12 +48,13 @@ class block_guestcourses extends block_base
         $showinvisible = $CFG->block_guestcourses_showinvisible;
 
         // Has user capapility to view the list of all courses with enrolmentmethod guest?
+        $capabilityviewContent = '';
         $capabilityviewContent = has_capability('block/guestcourses:viewcontent', $this->context);
 
         $showguestcourselistwithoutlogin = false;
         $showguestcourselistwithoutlogin  = $CFG->block_guestcourses_showguestcourselistwithoutlogin;
         if (!$capabilityviewContent && !$showguestcourselistwithoutlogin) {
-            $this->content->text = "capabilityviewContent=$capabilityviewContent . Inhalt nicht freigegeben.";
+            $this->content = null; // do not display the block if capability is missing
             return $this->content;
         }
 
@@ -61,6 +62,8 @@ class block_guestcourses extends block_base
 
         $guestcourses = $this->all_courseids_with_guestenrolment();
         $links = '';
+
+        // TODO: empty guestcourses !!!
         foreach ($guestcourses as $guestcourse){
 
             $id = $guestcourse[0]->id;
@@ -72,17 +75,20 @@ class block_guestcourses extends block_base
             $passwordindicator = '';
 
             if ($password != '') {
-                $passwordindicator = '<i class="icon fa fa-key fa-fw " title="Der Gastzugang benötigt einen Gastschlüssel." aria-label="Der Gastzugang benötigt einen Gastschlüssel."></i>';
+                $passwordindicator = '<i class="icon fa fa-key fa-fw " title="' 
+                .  get_string('passwordindicatortitle', 'block_guestcourses') 
+                . '" aria-label="' 
+                . get_string('passwordindicatortitle', 'block_guestcourses') 
+                . '"></i>';
             }
-
-            $icon = '<i class="icon fa fa-graduation-cap fa-fw " title="Kurs" aria-label="Kurs"></i>';
+            
+            $icon = '<i class="icon fa fa-graduation-cap fa-fw " title="' . get_string('course') . '"aria-label="' . get_string('course') . '"></i>';
 
             $class = '';
             if (!$isvisible) {
                 $class = 'dimmed';
             }
 
-            // $linktext = "$icon $fullname id=$id $passwordindicator visible=$isvisible";
             $linktext = "$icon $fullname id=$id $passwordindicator";
             if ($isvisible || ($showinvisible && $capabilityviewinvisible))  {
                 $links .= html_writer::link(new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)), $linktext, array('class' => "$class") );
@@ -90,42 +96,15 @@ class block_guestcourses extends block_base
             }
         }
 
+        $footer = '';
         $this->content = new stdClass;
         $this->content->text  = $links;
-
-        $footer = '';
-        
-        $footerdebug = 
-        '$showguestcourselist=' . $showguestcourselist . '<br>' .
-        '$showinvisible=' . $showinvisible . '<br>' .
-        '$capabilityviewContent=' . $capabilityviewContent . '<br>' .
-        '$capabilityviewinvisible=' . $capabilityviewinvisible . '<br>'  .
-        '$isvisible=' . $isvisible .  '<br>' ;
-        // $footer = "$footerdebug";
-
-        $this->content->footer = "$footer";
-
+        $this->content->footer = $footer; // maybe not needed
         return $this->content;
     }
 
     public function has_config() {
         return true;
-    }
-
-    /**
-     * @var  $USER  
-     * @var  int $roleid
-     * @var  $context  
-     * @return bool true, if $user has the role with $roleid in $context
-     */
-    public function has_user_role_with_roleid_in_context($USER, int $roleid, $context): bool {
-        $roles = get_user_roles($context, $USER->id, true);
-        foreach ($roles as $role) {
-            if ($role->roleid === $roleid ) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -142,7 +121,7 @@ class block_guestcourses extends block_base
                         $guestcourses[] = array($course, $enrolmethod->password);
                     }
                 } 
-            } 
+            }
         return $guestcourses;
         } 
     }
@@ -151,9 +130,8 @@ class block_guestcourses extends block_base
      * @return array returns all courses in this moodle
      */
     public function getallcoursesbyselect(): array {
-        global $DB;
-        $query = "SELECT id, fullname, shortname, startdate, enddate, visible from {course}";
-        $courselist = $DB->get_records_sql($query);
+        $courselist = [];
+        $courselist = core_course_category::get(0)->get_courses(array('recursive' => true, 'sort' => array('id' => 1)));
         return $courselist;
     }
 

@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->maturity = MATURITY_BETA;
-$plugin->version  = 2022010204;
+$plugin->version  = 2022013000;
 $plugin->component = 'block_guestcourses';
 $plugin->requires = 2017111300;
-$plugin->release = 'v1.0.1';
+$plugin->release = 'v1.0.2';
