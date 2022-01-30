@@ -37,8 +37,7 @@ $string['configshowinvisible'] = '(should not be used in productiv moodle becaus
 $string['showguestcourselistwithoutlogin'] = 'Show guestcourses without login';
 $string['configshowguestcourselistwithoutlogin'] = 'If activated the list of guest courses is shown to user without login.';
 
-
-
+$string['passwordindicatortitle'] = 'Guestaccesskey is needed';
 
 // capabilitys
 $string['guestcourses:myaddinstance'] = 'myaddinstance';
