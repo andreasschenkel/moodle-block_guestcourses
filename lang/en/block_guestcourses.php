@@ -17,7 +17,7 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     local_feedbackchoicegenerator
+ * @package     block_guestcourses
  * @category    string
  * @copyright   Andreas Schenkel
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,17 +29,17 @@ $string['pluginname'] = 'Guestcourses';
 $string['title'] = 'Courses with guestaccess';
 
 $string['showguestcourselist'] = 'Show guestcourses';
-$string['configshowguestcourselist'] = 'If activated then courses with enrolmentmethod guest are shown in the block.';
+$string['showguestcourselist_desc'] = 'If activated then courses with enrolmentmethod guest are shown in the block.';
 
 $string['showinvisible'] = 'Show invisible courses (should not be used in productiv moodle because name of course will be visible!)';
-$string['configshowinvisible'] = '(should not be used in productiv moodle because name of course will be visible!) If activated then courses with that are unvisible are not integrated in the list of shown guestcourses. (capability is also needed)';
+$string['showinvisible_desc'] = '(Should not be used in productiv moodle because name of course will be visible!) If activated then courses that are hidden are not integrated in the list of shown guestcourses. (capability is also needed)';
 
 $string['showguestcourselistwithoutlogin'] = 'Show guestcourses without login';
-$string['configshowguestcourselistwithoutlogin'] = 'If activated the list of guest courses is shown to user without login.';
+$string['showguestcourselistwithoutlogin_desc'] = 'If activated the list of guest courses is shown to user without login.';
 
 $string['passwordindicatortitle'] = 'Guestaccesskey is needed';
 
-// capabilitys
+// Langugage strings for capabilitys.
 $string['guestcourses:myaddinstance'] = 'myaddinstance';
 $string['guestcourses:addinstance'] = 'addinstance';
 $string['guestcourses:viewcontent'] = 'viewcontent';
