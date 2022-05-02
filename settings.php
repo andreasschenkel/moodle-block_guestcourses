@@ -23,32 +23,26 @@
 defined('MOODLE_INTERNAL') || die;
 
 $settings = new admin_settingpage( 'block_guestcourses', 'Guest course list' );
-
-// Create 
-// $ADMIN->add( 'blocksettings', $settings );
-
-
 if ($ADMIN->fulltree) {
 
     $settings->add(new admin_setting_configcheckbox(
-        'block_guestcourses_showguestcourselist',
+        'block_guestcourses/showguestcourselist',
         get_string('showguestcourselist', 'block_guestcourses'),
-        get_string('configshowguestcourselist', 'block_guestcourses'),
+        get_string('showguestcourselist_desc', 'block_guestcourses'),
         1
     ));
 
     $settings->add(new admin_setting_configcheckbox(
-        'block_guestcourses_showinvisible',
+        'block_guestcourses/showinvisible',
         get_string('showinvisible', 'block_guestcourses'),
-        get_string('configshowinvisible', 'block_guestcourses'),
+        get_string('showinvisible_desc', 'block_guestcourses'),
         0
     ));
 
     $settings->add(new admin_setting_configcheckbox(
-        'block_guestcourses_showguestcourselistwithoutlogin',
+        'block_guestcourses/showguestcourselistwithoutlogin',
         get_string('showguestcourselistwithoutlogin', 'block_guestcourses'),
-        get_string('configshowguestcourselistwithoutlogin', 'block_guestcourses'),
+        get_string('showguestcourselistwithoutlogin_desc', 'block_guestcourses'),
         0
     ));
-
 }
