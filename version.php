@@ -17,8 +17,8 @@
 /**
  * Version details.
  *
- * @package    local_feedbackchoicegenerator
- * @copyright  2021 Andreas Schenkel
+ * @package    block_guestcourses
+ * @copyright  2022 Andreas Schenkel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
