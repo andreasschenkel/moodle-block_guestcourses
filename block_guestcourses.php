@@ -38,21 +38,21 @@ class block_guestcourses extends block_base {
         }
 
         // Check setting.
-        $showguestcourselist = get_config('showguestcourselist', 'block_guestcourses');
+        $showguestcourselist = get_config( 'block_guestcourses', 'showguestcourselist');
 
         if (!$showguestcourselist) {
             return "showguestcourselist = $showguestcourselist";
         }
 
         $showinvisible = false;
-        $showinvisible = get_config('showinvisible', 'block_guestcourses');
+        $showinvisible = get_config('block_guestcourses', 'showinvisible');
 
         // Has user capapility to view the list of all courses with enrolmentmethod guest?
         $capabilityviewcontent = '';
         $capabilityviewcontent = has_capability('block/guestcourses:viewcontent', $this->context);
 
         $showguestcourselistwithoutlogin = false;
-        $showguestcourselistwithoutlogin = get_config('showguestcourselistwithoutlogin', 'block_guestcourses');
+        $showguestcourselistwithoutlogin = get_config('block_guestcourses', 'showguestcourselistwithoutlogin');
 
         if (!$capabilityviewcontent && !$showguestcourselistwithoutlogin) {
             $this->content = null;
@@ -74,9 +74,9 @@ class block_guestcourses extends block_base {
 
             if ($password != '') {
                 $passwordindicator = '<i class="icon fa fa-key fa-fw " title="'
-                .  get_string('passwordindicatortitle', 'block_guestcourses')
+                .  get_string('block_guestcourses', 'passwordindicatortitle')
                 . '" aria-label="'
-                . get_string('passwordindicatortitle', 'block_guestcourses')
+                . get_string('block_guestcourses', 'passwordindicatortitle')
                 . '"></i>';
             }
 
