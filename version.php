@@ -17,15 +17,15 @@
 /**
  * Version details.
  *
- * @package    local_feedbackchoicegenerator
- * @copyright  2021 Andreas Schenkel
+ * @package    block_guestcourses
+ * @copyright  2022 Andreas Schenkel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->maturity = MATURITY_BETA;
-$plugin->version  = 2022050200;
+$plugin->version  = 2022050201;
 $plugin->component = 'block_guestcourses';
 $plugin->requires = 2017111300;
-$plugin->release = 'v2.0.0';
+$plugin->release = 'v2.0.1';
