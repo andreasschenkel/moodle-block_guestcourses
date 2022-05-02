@@ -25,36 +25,37 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-class block_guestcourses extends block_base
-{
+class block_guestcourses extends block_base {
     public function init() {
         $this->title = get_string('title', 'block_guestcourses');
     }
 
     public function get_content() {
-        global $CFG, $USER;
+        global $USER;
         $id = $USER->id;
         if ($this->content !== null) {
-          return $this->content;
+            return $this->content;
         }
 
         // Check setting.
-        $showguestcourselist = $CFG->block_guestcourses_showguestcourselist;
+        $showguestcourselist = get_config('showguestcourselist', 'block_guestcourses');
+
         if (!$showguestcourselist) {
             return "showguestcourselist = $showguestcourselist";
         }
 
         $showinvisible = false;
-        $showinvisible = $CFG->block_guestcourses_showinvisible;
+        $showinvisible = get_config('showinvisible', 'block_guestcourses');
 
         // Has user capapility to view the list of all courses with enrolmentmethod guest?
-        $capabilityviewContent = '';
-        $capabilityviewContent = has_capability('block/guestcourses:viewcontent', $this->context);
+        $capabilityviewcontent = '';
+        $capabilityviewcontent = has_capability('block/guestcourses:viewcontent', $this->context);
 
         $showguestcourselistwithoutlogin = false;
-        $showguestcourselistwithoutlogin  = $CFG->block_guestcourses_showguestcourselistwithoutlogin;
-        if (!$capabilityviewContent && !$showguestcourselistwithoutlogin) {
-            $this->content = null; // do not display the block if capability is missing
+        $showguestcourselistwithoutlogin = get_config('showguestcourselistwithoutlogin', 'block_guestcourses');
+
+        if (!$capabilityviewcontent && !$showguestcourselistwithoutlogin) {
+            $this->content = null;
             return $this->content;
         }
 
@@ -62,8 +63,7 @@ class block_guestcourses extends block_base
 
         $guestcourses = $this->all_courseids_with_guestenrolment();
         $links = '';
-        foreach ($guestcourses as $guestcourse){
-
+        foreach ($guestcourses as $guestcourse) {
             $id = $guestcourse[0]->id;
             $fullname = $guestcourse[0]->fullname;
             $isvisible = $guestcourse[0]->visible;
@@ -73,14 +73,18 @@ class block_guestcourses extends block_base
             $passwordindicator = '';
 
             if ($password != '') {
-                $passwordindicator = '<i class="icon fa fa-key fa-fw " title="' 
-                .  get_string('passwordindicatortitle', 'block_guestcourses') 
-                . '" aria-label="' 
-                . get_string('passwordindicatortitle', 'block_guestcourses') 
+                $passwordindicator = '<i class="icon fa fa-key fa-fw " title="'
+                .  get_string('passwordindicatortitle', 'block_guestcourses')
+                . '" aria-label="'
+                . get_string('passwordindicatortitle', 'block_guestcourses')
                 . '"></i>';
             }
-            
-            $icon = '<i class="icon fa fa-graduation-cap fa-fw " title="' . get_string('course') . '"aria-label="' . get_string('course') . '"></i>';
+
+            $icon = '<i class="icon fa fa-graduation-cap fa-fw " title="' .
+                get_string('course') .
+                '"aria-label="' .
+                get_string('course') .
+                '"></i>';
 
             $class = '';
             if (!$isvisible) {
@@ -88,8 +92,12 @@ class block_guestcourses extends block_base
             }
 
             $linktext = "$icon $fullname id=$id $passwordindicator";
-            if ($isvisible || ($showinvisible && $capabilityviewinvisible))  {
-                $links .= html_writer::link(new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)), $linktext, array('class' => "$class") );
+            if ($isvisible || ($showinvisible && $capabilityviewinvisible)) {
+                $links .= html_writer::link(
+                    new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)),
+                    $linktext,
+                    array('class' => "$class")
+                );
                 $links .= "<br>";
             }
         }
@@ -97,7 +105,7 @@ class block_guestcourses extends block_base
         $footer = '';
         $this->content = new stdClass;
         $this->content->text  = $links;
-        $this->content->footer = $footer; // maybe not needed
+        $this->content->footer = $footer;
         return $this->content;
     }
 
@@ -107,21 +115,22 @@ class block_guestcourses extends block_base
 
     /**
      * @return array returns all courses where the guestrole is activated and the guestaccesskey
-     */ 
+     */
     public function all_courseids_with_guestenrolment(): array {
         $courses = $this->getallcoursesbyselect();
         $guestcourses = [];
         if ($courses) {
             foreach ($courses as $course) {
-                $enrolmethods = enrol_get_instances($course->id, true) ;
+                $enrolmethods = enrol_get_instances($course->id, true);
                 foreach ($enrolmethods as $enrolmethod) {
                     if ($enrolmethod->enrol == "guest") {
                         $guestcourses[] = array($course, $enrolmethod->password);
                     }
-                } 
+                }
             }
+            return $guestcourses;
+        }
         return $guestcourses;
-        } 
     }
 
     /**
