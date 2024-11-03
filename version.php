@@ -23,9 +23,13 @@
  */
 
 defined('MOODLE_INTERNAL') || die;
-
-$plugin->maturity = MATURITY_BETA;
-$plugin->version  = 2022050201;
-$plugin->component = 'block_guestcourses';
+$plugin->version  = 2024110300;
 $plugin->requires = 2017111300;
-$plugin->release = 'v2.0.1';
+$plugin->supported = [
+    401,
+    405,
+];
+// $plugin->incompatible = [401];
+$plugin->component = 'block_guestcourses';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = 'v405.2.0.2';
