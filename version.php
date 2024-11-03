@@ -29,7 +29,6 @@ $plugin->supported = [
     401,
     405,
 ];
-// $plugin->incompatible = [401];
 $plugin->component = 'block_guestcourses';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v405.2.0.2';
