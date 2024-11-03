@@ -58,6 +58,15 @@ See chapter settings to get information about the configuration.
 
 ## D: Changelog ##
 
+[[v405.2.0.2]]
+
+20241103
+- fix codechecker issues
+- fix error in tooltip for enrolement key indicator
+- add hint that cap is needet to view hidden courses that have guest enrolment
+- enhance version.php
+
+
 [[v1.0.2]] 
 
 20220120
