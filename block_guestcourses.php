@@ -121,7 +121,7 @@ class block_guestcourses extends block_base {
     }
 
     /**
-     * Returns true because the block has additional configs
+     * Returns true because the block has setting.php
      *
      * @return true
      */
