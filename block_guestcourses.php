@@ -85,9 +85,9 @@ class block_guestcourses extends block_base {
 
             if ($password != '') {
                 $passwordindicator = '<i class="icon fa fa-key fa-fw " title="'
-                .  get_string('block_guestcourses', 'passwordindicatortitle')
+                .  get_string('passwordindicatortitle', 'block_guestcourses')
                 . '" aria-label="'
-                . get_string('block_guestcourses', 'passwordindicatortitle')
+                . get_string('passwordindicatortitle', 'block_guestcourses')
                 . '"></i>';
             }
 
