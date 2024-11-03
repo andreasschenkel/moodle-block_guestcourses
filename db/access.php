@@ -15,55 +15,46 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Course list advanced block caps.
+ * Block guestcourses caps.
  *
- * @package    block_course_list_advanced
- * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
- * @author     Andreas Schenkel - Schulportal Hessen
+ * @copyright  2022 Andreas Schenkel
+ * @package    block_guestcourses
+ * @author     Andreas Schenkel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
 
-    'block/guestcourses:myaddinstance' => array(
+    'block/guestcourses:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-        ),
+        'archetypes' => [],
+    ],
 
-    ),
-
-    'block/guestcourses:addinstance' => array(
+    'block/guestcourses:addinstance' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-        ),
+        'archetypes' => [],
+    ],
 
-    ),
-
-    'block/guestcourses:viewcontent' => array(
+    'block/guestcourses:viewcontent' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'user' => CAP_ALLOW,
-        )
-    ),
+        'archetypes' => ['user' => CAP_ALLOW],
+    ],
 
-    'block/guestcourses:viewinvisible' => array(
+    'block/guestcourses:viewinvisible' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-        )
+        'archetypes' => [],
+    ],
 
-    ),
-
-
-);
+];

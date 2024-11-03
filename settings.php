@@ -15,8 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    local_feedbackchoicegenerator
- * @copyright   Andreas Schenkel
+ * block_guestcourses
+ *
+ * @package    block_guestcourses
+ * @copyright  Andreas Schenkel
+ * @author     Andreas Schenkel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * atto_orphaned privacy provider.
+ * block_guestcourses privacy provider.
  *
  * @package    block_guestcourses
  * @copyright  2022 Andreas Schenkel <Andreas.Schenkel@schulportal.hessen.de>
@@ -23,8 +23,6 @@
  */
 
 namespace atto_orphaned\privacy;
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Privacy Subsystem for atto_orphaned implementing null_provider.
@@ -40,7 +38,7 @@ class provider implements \core_privacy\local\metadata\null_provider {
      *
      * @return  string
      */
-    public static function get_reason() : string {
+    public static function get_reason(): string {
         return 'privacy:metadata';
     }
 }
