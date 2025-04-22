@@ -3,6 +3,7 @@
 [[v5.0.1]]
 
 - for moodle 5
+- fix codececker issues
 
 [[v1.0.2]]
 
