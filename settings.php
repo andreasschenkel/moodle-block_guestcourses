@@ -15,7 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    local_feedbackchoicegenerator
+ * Block to show the guestcourses in the moodle
+ *
+ * @package    block_guestcourses
  * @copyright   Andreas Schenkel
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

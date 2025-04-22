@@ -23,13 +23,24 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
+/**
+ * Class for block guestcourses.
+ */
 class block_guestcourses extends block_base {
+    /**
+     * Initializing the block eg. setting the block title.
+     *
+     * @return void
+     */
     public function init() {
         $this->title = get_string('title', 'block_guestcourses');
     }
 
+    /**
+     * Generates the html content for the block
+     *
+     * @return stdClass|string|null
+     */
     public function get_content() {
         global $USER;
         $id = $USER->id;
@@ -94,9 +105,9 @@ class block_guestcourses extends block_base {
             $linktext = "$icon $fullname id=$id $passwordindicator";
             if ($isvisible || ($showinvisible && $capabilityviewinvisible)) {
                 $links .= html_writer::link(
-                    new moodle_url('/course/view.php', array('id' => $id, 'notifyeditingon' => 1)),
+                    new moodle_url('/course/view.php', ['id' => $id, 'notifyeditingon' => 1]),
                     $linktext,
-                    array('class' => "$class")
+                   ['class' => "$class"]
                 );
                 $links .= "<br>";
             }
@@ -109,12 +120,19 @@ class block_guestcourses extends block_base {
         return $this->content;
     }
 
+    /**
+     * Returns true if the plugin has config settings
+     *
+     * @return true
+     */
     public function has_config() {
         return true;
     }
 
     /**
-     * @return array returns all courses where the guestrole is activated and the guestaccesskey
+     * Returns all courses where the guestrole is activated and the guestaccesskey
+     *
+     * @return array containing the list of courses inkl accesskeys
      */
     public function all_courseids_with_guestenrolment(): array {
         $courses = $this->getallcoursesbyselect();
@@ -124,7 +142,7 @@ class block_guestcourses extends block_base {
                 $enrolmethods = enrol_get_instances($course->id, true);
                 foreach ($enrolmethods as $enrolmethod) {
                     if ($enrolmethod->enrol == "guest") {
-                        $guestcourses[] = array($course, $enrolmethod->password);
+                        $guestcourses[] = [$course, $enrolmethod->password];
                     }
                 }
             }
@@ -134,11 +152,13 @@ class block_guestcourses extends block_base {
     }
 
     /**
-     * @return array returns all courses in this moodle
+     * Returns all courses in this moodle
+     *
+     * @return array all courses in this moodle
      */
     public function getallcoursesbyselect(): array {
         $courselist = [];
-        $courselist = core_course_category::get(0)->get_courses(array('recursive' => true, 'sort' => array('id' => 1)));
+        $courselist = core_course_category::get(0)->get_courses(['recursive' => true, 'sort' => ['id' => 1]]);
         return $courselist;
     }
 

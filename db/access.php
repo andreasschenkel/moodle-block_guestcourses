@@ -17,7 +17,7 @@
 /**
  * Course list advanced block caps.
  *
- * @package    block_course_list_advanced
+ * @package    block_guestcourses
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @author     Andreas Schenkel - Schulportal Hessen
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,45 +25,38 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
 
-    'block/guestcourses:myaddinstance' => array(
+    'block/guestcourses:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-        ),
+        'archetypes' => [],
+    ],
 
-    ),
-
-    'block/guestcourses:addinstance' => array(
+    'block/guestcourses:addinstance' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-        ),
+        'archetypes' => [],
+    ],
 
-    ),
-
-    'block/guestcourses:viewcontent' => array(
+    'block/guestcourses:viewcontent' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
+        'archetypes' => [
             'user' => CAP_ALLOW,
-        )
-    ),
+        ],
+    ],
 
-    'block/guestcourses:viewinvisible' => array(
+    'block/guestcourses:viewinvisible' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-        )
+        'archetypes' => [],
+    ],
 
-    ),
-
-
-);
+];
