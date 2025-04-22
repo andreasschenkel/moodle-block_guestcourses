@@ -54,30 +54,6 @@ See chapter settings to get information about the configuration.
     not set to any role
     only siteadmin is allowed to view invisible hidden courses
 
-
-
-## D: Changelog ##
-
-[[v1.0.2]] 
-
-20220120
-- some text strings defined correctly
-- don't show block when capability is missing
-- use core_course_category::get_courses() to find alle courses
- 
-
-20220110 
-
-- bug missing initialisation of variable
-
-[[v1.0.1]] beta
-- change footer
-- indicator for visibility of course instead of text
-- some languagestrings are missing
-
-[[v1.0.0]] initial
-
-
 ## E: Installing via uploaded ZIP file ##
 
 1. Log in to your Moodle site as an admin and go to _Site administration >
