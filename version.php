@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->maturity = MATURITY_STABLE;
-$plugin->version  = 2025042200;
+$plugin->version  = 2026042100;
 $plugin->component = 'block_guestcourses';
-$plugin->requires = 2022041901.00; // Moodle 4.0.1.
-$plugin->supported = [401, 500];
-$plugin->release = 'v5.0.1';
+$plugin->requires = 2025061100; // Moodle 500
+$plugin->supported = [500, 502];
+$plugin->release = 'v5.0.2';

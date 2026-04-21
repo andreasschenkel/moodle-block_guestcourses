@@ -49,7 +49,7 @@ class block_guestcourses extends block_base {
         }
 
         // Check setting.
-        $showguestcourselist = get_config( 'block_guestcourses', 'showguestcourselist');
+        $showguestcourselist = get_config('block_guestcourses', 'showguestcourselist');
 
         if (!$showguestcourselist) {
             return "showguestcourselist = $showguestcourselist";
@@ -107,14 +107,14 @@ class block_guestcourses extends block_base {
                 $links .= html_writer::link(
                     new moodle_url('/course/view.php', ['id' => $id, 'notifyeditingon' => 1]),
                     $linktext,
-                   ['class' => "$class"]
+                    ['class' => "$class"]
                 );
                 $links .= "<br>";
             }
         }
 
         $footer = '';
-        $this->content = new stdClass;
+        $this->content = new stdClass();
         $this->content->text  = $links;
         $this->content->footer = $footer;
         return $this->content;
@@ -161,5 +161,4 @@ class block_guestcourses extends block_base {
         $courselist = core_course_category::get(0)->get_courses(['recursive' => true, 'sort' => ['id' => 1]]);
         return $courselist;
     }
-
 }

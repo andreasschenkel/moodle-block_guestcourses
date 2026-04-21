@@ -24,9 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$settings = new admin_settingpage( 'block_guestcourses',  get_string('pluginname', 'block_guestcourses') );
+$settings = new admin_settingpage('block_guestcourses', get_string('pluginname', 'block_guestcourses'));
 if ($ADMIN->fulltree) {
-
     $settings->add(new admin_setting_configcheckbox(
         'block_guestcourses/showguestcourselist',
         get_string('showguestcourselist', 'block_guestcourses'),
